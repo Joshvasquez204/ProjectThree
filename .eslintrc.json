@@ -1,0 +1,51 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react", "prettier/standard"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "func-names": 0,
+    "space-before-function-paren": 0,
+    "no-console": "off",
+    "comma-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": true,
+        "allowBind": false,
+        "ignoreRefs": true
+      }
+    ],
+    "react/no-did-update-set-state": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unused-prop-types": "error",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "quotes": [
+      "error",
+      "double",
+      { "avoidEscape": true, "allowTemplateLiterals": false }
+    ],
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "import/newline-after-import": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "no-shadow": "off",
+    "consistent-return": "off",
+    "max-len": "off",
+    "no-trailing-spaces": "off",
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off",
+    "linebreak-style": "off",
+    "arrow-parens": "off",
+    "global-require": "off",
+    "one-var": "off",
+    "one-var-declaration-per-line": "off",
+    "arrow-body-style": "off",
+    "no-useless-escape": "off"
+  }
+}

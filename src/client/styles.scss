@@ -1,0 +1,555 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css?family=Righteous|Ubuntu");
+
+$blue: #3a6daf;
+$blue-dark: #2940c4;
+$blue-light: #7db5f5;
+$grey: #adadad;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+$grey-dark: #757d75;
+$grey-medium: #abb7b7;
+$grey-light: #bdc3c7;
+$porcelain: #ecf0f1;
+$cherry-blossom: #5d8cae;
+
+$primary: $blue;
+$link: $grey;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+$body-background-color: $porcelain;
+$control-border-width: 2px;
+$border-color: $brown;
+
+$input-border-color: transparent;
+$input-shadow: none;
+$input-placeholder-color: $blue-dark;
+
+// header
+$navbar-height: 3rem;
+
+// footer
+$footer-height: 1.5rem;
+$footer-padding: 0.15rem;
+$footer-background-color: $primary;
+
+// Modal
+$modal-card-head-background-color: $primary;
+$modal-card-title-color: $beige-lighter;
+$modal-card-head-padding: 0.75rem;
+$modal-card-body-padding: 0.75rem;
+
+// tooltip ===============================================================
+$tooltip-color: $primary;
+$tooltip-border-color: $blue-dark;
+$tooltip-text-color: $beige-lighter;
+$tooltip-border-width: 1px;
+$tooltip-triangle-width: $tooltip-border-width * 8;
+
+@import "../../node_modules/bulma/bulma.sass";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  overflow: hidden;
+}
+
+html,
+body,
+.wrapper {
+  overflow: hidden;
+}
+
+/* React Burger CSS */
+#react-burger-container {
+  position: absolute;
+  top: $navbar-height;
+  bottom: $footer-height;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Individual itrem */
+.bm-itrem {
+  display: inline-block;
+
+  /* Our sidebar itrem styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-itrem:hover {
+  color: white;
+}
+
+/* hide the bm burger icon and use bulma icon */
+.bm-burger-button {
+  display: none;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-overlay {
+  height: calc(100% - #{$navbar-height} - #{$footer-height}) !important;
+}
+
+.bm-menu {
+  background: #373a47;
+  padding: 2.5rem 1.5rem 0;
+  font-size: 1.15rem;
+  height: calc(100% - #{$navbar-height} - #{$footer-height}) !important;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for itrem list */
+.bm-itrem-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+/* End React Burger CSS */
+
+nav {
+  height: $navbar-height;
+  max-height: $navbar-height;
+
+  .navbar-itrem {
+    color: $beige-lighter;
+
+    .title {
+      font-family: "Monoton", cursive;
+      color: $beige-lighter;
+    }
+
+    .subtitle {
+      color: $beige-lighter;
+    }
+
+    strong {
+      color: $beige-light;
+    }
+  }
+}
+
+.tooltip {
+  &-wrapper {
+    position: relative;
+    display: inline;
+
+    &:hover {
+      .tooltip-bubble {
+        visibility: visible;
+      }
+    }
+  }
+
+  &-bubble {
+    position: absolute;
+    background: $tooltip-color;
+    border-radius: 3px;
+    color: $tooltip-text-color;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding: 0.75rem;
+    text-align: center;
+    min-width: 4rem;
+    max-width: 10rem;
+    padding: 0.25rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border: $tooltip-border-width solid $tooltip-border-color;
+    border-radius: 3px;
+    z-index: 10;
+
+    /* Hide the tooltip by default */
+    visibility: hidden;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    /* The fill of the triangle */
+    &::after {
+      z-index: 9;
+    }
+
+    // position transforms
+    &.top {
+      bottom: 100%;
+      margin-bottom: $tooltip-triangle-width + 3px;
+      transform: translateX(-50%);
+      left: 50%;
+
+      &::before,
+      &::after {
+        border-left: $tooltip-triangle-width solid transparent;
+        border-right: $tooltip-triangle-width solid transparent;
+        top: 100%;
+        left: 50%;
+        margin-left: -$tooltip-triangle-width;
+      }
+
+      &::before {
+        border-top: $tooltip-triangle-width solid $tooltip-border-color;
+        margin-top: 0.5px;
+      }
+
+      &::after {
+        border-top: $tooltip-triangle-width solid $tooltip-color;
+        margin-top: -1px;
+      }
+    }
+
+    &.bottom {
+      top: 200%;
+      margin-top: $tooltip-triangle-width + 5px;
+      transform: translateX(-50%);
+      left: 50%;
+
+      &::before,
+      &::after {
+        border-left: $tooltip-triangle-width solid transparent;
+        border-right: $tooltip-triangle-width solid transparent;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -$tooltip-triangle-width;
+      }
+
+      &::before {
+        border-bottom: $tooltip-triangle-width solid $tooltip-border-color;
+        margin-bottom: 1px;
+      }
+
+      &::after {
+        border-bottom: $tooltip-triangle-width solid $tooltip-color;
+        margin-bottom: -0.5px;
+      }
+    }
+
+    &.left {
+      margin-right: $tooltip-triangle-width + 1px;
+      right: 100%;
+      top: 100%;
+      transform: translateY(-50%);
+
+      &::before,
+      &::after {
+        border-top: $tooltip-triangle-width solid transparent;
+        border-bottom: $tooltip-triangle-width solid transparent;
+        margin-left: -$tooltip-triangle-width;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        border-left: $tooltip-triangle-width solid $tooltip-border-color;
+        margin-left: 0.5px;
+      }
+
+      &::after {
+        border-left: $tooltip-triangle-width solid $tooltip-color;
+        margin-left: -1px;
+      }
+    }
+
+    &.right {
+      margin-left: $tooltip-triangle-width + 1px;
+      left: 100%;
+      top: 100%;
+      transform: translateY(-50%);
+
+      &::before,
+      &::after {
+        border-top: $tooltip-triangle-width solid transparent;
+        border-bottom: $tooltip-triangle-width solid transparent;
+        margin-right: -$tooltip-triangle-width;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        border-right: $tooltip-triangle-width solid $tooltip-border-color;
+        margin-right: 0.5px;
+      }
+
+      &::after {
+        border-right: $tooltip-triangle-width solid $tooltip-color;
+        margin-right: -1px;
+      }
+    }
+  }
+}
+
+.button {
+  &.is-primary {
+    color: $beige-lighter;
+  }
+
+  &.is-light {
+    color: $blue;
+  }
+
+  &.icon {
+    height: 2.75rem;
+    width: 2.75rem;
+    font-size: 1.5rem;
+  }
+}
+
+.input {
+  &::placeholder {
+    color: $input-placeholder-color;
+    opacity: 0.4;
+  }
+
+  &.react-select-container {
+    padding: 0;
+    margin: 0;
+
+    .react-select__control {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      line-height: 20px;
+      background-color: transparent;
+    }
+
+    .react-select__value-container {
+      padding: 0;
+      margin: 0;
+
+      & > div {
+        padding: 0;
+        margin: 0;
+      }
+
+      // &:last-child {
+      //   // padding: 0;
+
+      //   // background-color: yellow;
+
+      // }
+
+      // .react-select__input {
+      // }
+    }
+
+    .react-select__placeholder {
+      color: $input-placeholder-color;
+      opacity: 0.4;
+    }
+
+    .react-select__menu {
+      left: 0;
+      z-index: 25;
+      padding: 0 2px;
+    }
+  }
+}
+
+.modal {
+  .error-message {
+    .column {
+      padding: 0.5rem;
+      &:first-of-type {
+        padding-right: 0;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.navbar {
+  font-family: "Righteous", cursive;
+
+  .navbar-brand {
+    .subtitle {
+      font-size: 0.75rem;
+      color: $beige-lighter;
+      font-family: "Ubuntu", sans-serif;
+    }
+
+    .button {
+      &.menu {
+        position: fixed;
+        top: 0.1rem;
+        right: 0.25rem;
+      }
+    }
+  }
+}
+
+.left-nav {
+  .menu-label {
+    font-size: 1rem;
+    // color: $beige-light;
+  }
+
+  .menu-list {
+    a {
+      font-size: 0.9rem;
+      color: $beige-light;
+    }
+  }
+}
+
+.vehicle {
+  .card-header-title {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.5rem;
+    font-family: "Righteous", cursive;
+  }
+
+  .card-content {
+    min-height: 150px;
+    padding: 0.5rem 0.75rem;
+
+    .content-header {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .model {
+      margin-left: 0.25rem;
+    }
+
+    hr {
+      background-color: $grey-dark;
+      margin: 0.5rem 0.1rem;
+      height: 1px;
+    }
+
+    .notes {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .card-footer-item {
+    padding: 0.5rem;
+  }
+}
+
+footer.footer {
+  width: 100%;
+  height: $footer-height;
+  padding: $footer-padding;
+  color: $beige-light;
+  font-size: small;
+  position: fixed;
+  bottom: 0;
+}
+
+.page {
+  margin-top: 0.75rem;
+
+  .form-wrapper {
+    margin: 0.5rem auto;
+
+    & > .column {
+      margin: 0 auto;
+      background-color: $blue-light;
+      border: $border-color solid 1px;
+      border-radius: 5px;
+      padding: 0.25rem 0.5rem;
+
+      .form-header {
+        margin-bottom: 0.6rem;
+        text-align: center;
+
+        .form-title {
+          color: $blue;
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+
+      .form-content {
+        & > .column {
+          padding: 0.4rem 0.75rem;
+
+          &.button-bar {
+            padding-top: 0.2rem;
+            padding-bottom: 1rem;
+
+            strong {
+              color: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* TODO */
+  // &.home {
+  // }
+
+  &.log-in {
+    .form-wrapper {
+      min-height: 12rem;
+    }
+
+    a {
+      color: $blue-dark;
+      line-height: 2.4rem;
+      margin-left: 0.5rem;
+      &:visited {
+        color: $blue-dark;
+      }
+      &:hover {
+        color: $beige-light;
+      }
+    }
+  }
+
+  &.sign-up {
+    .form-wrapper {
+      min-height: 12rem;
+    }
+  }
+
+  /* TODO */
+  // &.no-match {
+  // }
+
+  &.sandbox {
+    .button {
+      margin: 0.1rem;
+    }
+  }
+}
